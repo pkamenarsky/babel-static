@@ -9,7 +9,7 @@ module.exports = function(babel) {
       CallExpression: function(path, state) {
         const filename = state.file.opts.filename,
               basename = filename.substr(0, filename.lastIndexOf('.')) || filename,
-              stptr    = "__stptr_" + basename.replace(/\//g, '_') + "_" + stptr_next;
+              stptr    = "__stptr_" + /* basename.replace(/\//g, '_') + "_" + */ stptr_next;
 
         if (path.node.callee.type === 'Identifier'
             && path.node.callee.name == 'static_ptr') {
