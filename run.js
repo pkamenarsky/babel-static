@@ -1,7 +1,7 @@
 // run.js
 var fs = require('fs');
 var babel = require('babel-core');
-var monad = require('./monad');
+var stptr = require('./static');
 
 // read the filename from the command line arguments
 var fileName = process.argv[2];
@@ -15,7 +15,7 @@ fs.readFile(fileName, function(err, data) {
 
   // use our plugin to transform the source
   var out = babel.transform(src, {
-    plugins: [monad]
+    plugins: [stptr]
   });
 
   // print the generated code to screen
