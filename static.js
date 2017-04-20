@@ -20,7 +20,7 @@ module.exports = function(babel) {
     },
 
     post: (file) => {
-      const sptr_props = Object.entries(stptr_table).map(([k, v]) => {
+      const stptr_props = Object.entries(stptr_table).map(([k, v]) => {
         return t.objectProperty(t.identifier(k), v);
       });
 
@@ -28,7 +28,7 @@ module.exports = function(babel) {
         "const",
         [t.variableDeclarator(
           t.identifier("__stptr_table"),
-          t.objectExpression(sptr_props))
+          t.objectExpression(stptr_props))
         ]));
     }
   };
