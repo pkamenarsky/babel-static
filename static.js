@@ -8,7 +8,8 @@ module.exports = function(babel) {
     visitor: {
       CallExpression: function(path, state) {
         const filename = state.file.opts.filename,
-              stptr    = "__stptr_" + filename + "_" + stptr_next;
+              basename = filename.substr(0, filename.lastIndexOf('.')) || filename,
+              stptr    = "__stptr_" + basename.replace(/\//g, '_') + "_" + stptr_next;
 
         if (path.node.callee.type === 'Identifier'
             && path.node.callee.name == 'static_ptr') {
